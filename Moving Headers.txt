@@ -1,0 +1,208 @@
+Defintions:
+	<xsd:element name="X-platform" type="xsd:string"/>  
+    <xsd:element name="X-language-key" type="xsd:string"/>  
+    <xsd:element name="X-version" type="xsd:string"/>  
+    <xsd:element name="X-build-number" type="xsd:integer"/>  
+    <xsd:element name="X-message-id" type="xsd:string"/>  
+    <xsd:element name="X-latitude" type="xsd:string"/>  
+    <xsd:element name="X-longitude" type="xsd:string"/>  
+    <xsd:element name="X-user-token" type="xsd:string"/>  
+    <xsd:element name="X-security-token" type="xsd:string"/>  
+    <xsd:element name="X-device-id" type="xsd:string"/>  
+    <xsd:element name="X-mobile-number" type="xsd:string"/>
+
+input Parameters:
+
+			<cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-platform" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-language-key" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-version" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-build-number" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-message-id" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-latitude" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-longitude" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-user-token" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-security-token" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-device-id" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/any" qualifier="X-mobile-number" ref="var" var="any11"/>
+			
+Destination Headers:
+			<cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-platform" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-language-key" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-version" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-build-number" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-message-id" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-latitude" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-longitude" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-user-token" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-security-token" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-device-id" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/any" qualifier="X-mobile-number" ref="var" var="any11"/>
+
+Global Envirement Headders
+			<cast castType="userDefined" path="$Environment1/any" qualifier="X-platform" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-language-key" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-version" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-build-number" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-message-id" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-latitude" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-longitude" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-user-token" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-security-token" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-device-id" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment1/any" qualifier="X-mobile-number" ref="var" var="any11"/>
+			
+			
+								-----------------------------------------------------	
+			<cast castType="userDefined" path="$Environment/any" qualifier="X-platform" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-language-key" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-version" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-build-number" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-message-id" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-latitude" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-longitude" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-user-token" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-security-token" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-device-id" ref="var" var="any11"/>
+            <cast castType="userDefined" path="$Environment/any" qualifier="X-mobile-number" ref="var" var="any11"/>								
+			
+		
+
+
+Moving : 
+						------------------------global envirement to output-------------------
+		<move>
+            <input path="$Environment/X-platform"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-platform"/>
+        </move>
+        <move>
+            <input path="$Environment/X-language-key"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-language-key"/>
+        </move>
+        <move>
+            <input path="$Environment/X-version"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-version"/>
+        </move>
+        <move>
+            <input path="$Environment/X-build-number"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-build-number"/>
+        </move>
+        <move>
+            <input path="$Environment/X-message-id"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-message-id"/>
+        </move>
+        <move>
+            <input path="$Environment/X-latitude"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-latitude"/>
+        </move>
+        <move>
+            <input path="$Environment/X-longitude"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-longitude"/>
+        </move>
+        <move>
+            <input path="$Environment/X-user-token"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-user-token"/>
+        </move>
+        <move>
+            <input path="$Environment/X-security-token"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-security-token"/>
+        </move>
+        <move>
+            <input path="$Environment/X-device-id"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-device-id"/>
+        </move>
+        <move>
+            <input path="$Environment/X-mobile-number"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-mobile-number"/>
+        </move>
+		
+		
+		----------------------------input to Global invironement----------------------------------
+				<move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-build-number"/>
+                    <output path="$Environment1/X-build-number"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-message-id"/>
+                    <output path="$Environment1/X-message-id"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-latitude"/>
+                    <output path="$Environment1/X-latitude"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-longitude"/>
+                    <output path="$Environment1/X-longitude"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-user-token"/>
+                    <output path="$Environment1/X-user-token"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-security-token"/>
+                    <output path="$Environment1/X-security-token"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-device-id"/>
+                    <output path="$Environment1/X-device-id"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-mobile-number"/>
+                    <output path="$Environment1/X-mobile-number"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-language-key"/>
+                    <output path="$Environment1/X-language-key"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-platform"/>
+                    <output path="$Environment1/X-platform"/>
+                </move>
+                <move>
+                    <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-version"/>
+                    <output path="$Environment1/X-version"/>
+                </move>
+	----------------------------------input parameters to output parameters-----------------------------------------
+	<move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-platform"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-platform"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-language-key"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-language-key"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-version"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-version"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-build-number"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-build-number"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-message-id"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-message-id"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-latitude"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-latitude"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-longitude"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-longitude"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-user-token"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-user-token"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-security-token"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-security-token"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-device-id"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-device-id"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/LocalEnvironment/REST/Input/Parameters/X-mobile-number"/>
+            <output path="$MessageAssembly1/LocalEnvironment/Destination/REST/Request/Parameters/X-mobile-number"/>
+        </move>

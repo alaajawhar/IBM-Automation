@@ -1,0 +1,731 @@
+swagger: '2.0'
+info:
+  title: Consumer_Registration
+  version: 1.0.0
+  description: Consumer_Registration
+  x-ibm-name: consumer-registration
+paths:
+  /securityToken/otp:
+    post:
+      operationId: postOtp
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            $ref: '#/definitions/OTP'
+        '400':
+          description: The operation was successful.
+          schema:
+            $ref: '#/definitions/Error'
+      description: Insert a otp
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/test'
+          description: The request body for the operation
+          required: true
+        - name: X-platform
+          in: header
+          type: string
+          required: true
+        - name: X-build-number
+          in: header
+          type: integer
+          required: true
+        - name: X-message-id
+          in: header
+          type: string
+          required: true
+        - name: X-language-key
+          in: header
+          type: string
+          required: true
+        - name: X-version
+          in: header
+          type: string
+          required: true
+        - name: X-latitude
+          in: header
+          type: string
+        - name: X-longitude
+          in: header
+          type: string
+        - name: X-user-token
+          in: header
+          type: string
+        - name: X-security-token
+          in: header
+          type: string
+        - name: ResendKey
+          in: query
+          type: string
+        - name: X-mobile-number
+          in: header
+          type: string
+          required: true
+    put:
+      operationId: putOtp1
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            $ref: '#/definitions/PUT_securityToken_RESP'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      description: Update otp
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/PUT_securityToken_REQ'
+          description: The request body for the operation
+          required: true
+        - name: X-security-token
+          in: header
+          type: string
+        - name: X-mobile-number
+          in: header
+          type: string
+          required: true
+        - name: X-longitude
+          in: header
+          type: string
+        - name: X-user-token
+          in: header
+          type: string
+        - name: X-version
+          in: header
+          type: string
+          required: true
+        - name: X-build-number
+          in: header
+          type: integer
+          required: true
+        - name: X-platform
+          in: header
+          type: string
+          required: true
+        - name: X-language-key
+          in: header
+          type: string
+          required: true
+        - name: X-message-id
+          in: header
+          type: string
+          required: true
+        - name: X-latitude
+          in: header
+          type: integer
+basePath: /stcpay
+definitions:
+  test:
+    type: object
+    properties: {}
+  OTP:
+    required:
+      - key
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+      mobileNumber:
+        type: string
+        readOnly: true
+      timeout:
+        type: string
+        readOnly: true
+      length:
+        type: integer
+        format: int32
+        readOnly: true
+  ActionButton:
+    required:
+      - accent
+      - buttonType
+      - name
+    type: object
+    properties:
+      name:
+        type: string
+      buttonType:
+        type: string
+        example: >-
+          DOWNLOAD_NEW_VERSION, KYC, ID_VERIFICATION, NATIONAL_ADDRESS, YES, NO,
+          COPY, SHARE, LOGOUT, JOIN, EXIT_APP, HOME, APPROVE, CANCEL, ABSHER,
+          IAM
+      accent:
+        type: string
+        example: 'POSITIVE, NEGATIVE'
+  Action:
+    required:
+      - buttons
+      - title
+      - type
+    type: object
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+        readOnly: true
+      icon:
+        type: string
+        readOnly: true
+      closable:
+        type: boolean
+        readOnly: true
+        default: false
+      referenceCode:
+        type: string
+        readOnly: true
+      buttons:
+        type: array
+        items:
+          $ref: '#/definitions/ActionButton'
+      type:
+        type: string
+        example: >-
+          GENERAL, MAINTENANCE, MAINTENANCE_INIT, ID_VERIFICATION, KYC,
+          NATIONAL_ADDRESS, PAYMENT_INBOX_CANCEL_ACTION, EXCEPTION,
+          MARKETPLACE_APPROVE, ABSHER, IAM
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      forbidden:
+        $ref: '#/definitions/Forbidden'
+      action:
+        $ref: '#/definitions/Action'
+  Forbidden:
+    required:
+      - type
+    type: object
+    properties:
+      keySigning:
+        $ref: '#/definitions/KeySigning'
+      otp:
+        $ref: '#/definitions/OTP'
+      geoLocation:
+        $ref: '#/definitions/GeoLocation'
+      threeds:
+        $ref: '#/definitions/Threeds'
+      csc:
+        $ref: '#/definitions/Csc'
+      walletSelection:
+        $ref: '#/definitions/AccountSelection'
+      type:
+        type: string
+        enum:
+          - OTP
+          - KEYSIGNING
+          - PIN
+          - LOCATION
+          - THREEDS
+          - WALLET_SELECTION
+          - CSC
+  KeySigning:
+    required:
+      - deviceId
+      - key
+      - mobileNumber
+      - signingType
+      - value
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+      timeout:
+        type: string
+        readOnly: true
+      mobileNumber:
+        type: string
+      deviceId:
+        type: string
+      signingType:
+        type: string
+        default: KEY_SIGNING
+        example: 'SHARED_SECRET, KEY_SIGNING'
+      device:
+        $ref: '#/definitions/Device'
+  GeoLocation:
+    required:
+      - latitude
+      - longitude
+    type: object
+    properties:
+      latitude:
+        type: string
+      longitude:
+        type: string
+  Threeds:
+    required:
+      - url
+    type: object
+    properties:
+      url:
+        type: string
+  Csc:
+    required:
+      - accountId
+    type: object
+    properties:
+      accountId:
+        type: integer
+        format: int32
+      code:
+        type: string
+  Device:
+    type: object
+    properties:
+      id:
+        type: string
+      seqNo:
+        type: integer
+        format: int32
+      name:
+        type: string
+      mac:
+        type: string
+      make:
+        type: string
+      osName:
+        type: string
+      platform:
+        type: string
+        enum:
+          - ANDROID
+          - IOS
+          - WEB
+          - KAIOS
+          - MF_67
+          - MF_68
+      osVersion:
+        type: string
+      deviceGuid:
+        type: string
+      pushToken:
+        type: string
+      platformPushToken:
+        type: string
+      publicKey:
+        type: string
+      signAlgType:
+        type: string
+        enum:
+          - ECDSA
+          - RSA
+          - SharedSecret
+          - ECSEDSA
+          - ECSADSA
+      adjustToken:
+        type: string
+      sharedSecret:
+        type: string
+      loginType:
+        type: string
+        default: PASSWORD
+        enum:
+          - BIOMETRIC
+          - PASSWORD
+  AccountSelection:
+    required:
+      - availableAccounts
+    type: object
+    properties:
+      amount:
+        type: string
+      availableAccounts:
+        type: array
+        items:
+          $ref: '#/definitions/CustomerAccount'
+  CustomerAccount:
+    required:
+      - alias
+      - appearance
+      - defaultAccount
+      - id
+      - type
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      accountUid:
+        type: string
+        readOnly: true
+      alias:
+        type: string
+      walletId:
+        type: string
+        readOnly: true
+      appearance:
+        type: string
+      type:
+        type: string
+        default: MAIN
+        example: 'MAIN, LINKED, SHARED, CREDIT_CARD, LOYALTY'
+      defaultAccount:
+        type: boolean
+        default: false
+      useForFee:
+        type: boolean
+        default: false
+      actions:
+        type: array
+        readOnly: true
+        items:
+          $ref: '#/definitions/CustomerAccountAction'
+      accountDetail:
+        $ref: '#/definitions/CustomerAccountDetail'
+      sharedAccountDetail:
+        $ref: '#/definitions/CustomerSharedAccountDetail'
+      creditCardAccountDetail:
+        $ref: '#/definitions/CustomerCreditCardAccountDetail'
+      loyaltyAccountDetail:
+        $ref: '#/definitions/CustomerLoyaltyAccountDetail'
+  CustomerAccountAction:
+    required:
+      - action
+    type: object
+    properties:
+      action:
+        type: string
+        example: >-
+          LOCAL_TRANSFER, WALLET_TRANSFER, BILL_PAYMENT, TOPUP_PAYMENT,
+          QR_PAYMENT, WITHDRAWAL, ADD_MONEY, SET_AS_DEFAULT
+  CustomerAccountDetail:
+    required:
+      - balance
+      - currency
+      - currentBalance
+      - ibanNumber
+    type: object
+    properties:
+      ibanNumber:
+        type: string
+      ibanInfoMessage:
+        type: string
+      sadadInfoMessage:
+        type: string
+      sadadNumber:
+        type: string
+      sadadBillerName:
+        type: string
+      sadadShareText:
+        type: string
+      sadadSupport:
+        $ref: '#/definitions/SupportInfo'
+      balance:
+        type: string
+      currentBalance:
+        type: string
+      currency:
+        type: string
+  CustomerSharedAccountDetail:
+    required:
+      - balance
+      - currency
+      - currentBalance
+      - icon
+      - sharedStatus
+    type: object
+    properties:
+      balance:
+        type: string
+      currentBalance:
+        type: string
+      accountLimit:
+        type: string
+        readOnly: true
+      currency:
+        type: string
+      icon:
+        type: string
+      ownerHolder:
+        $ref: '#/definitions/CustomerAccountHolder'
+      accountCategories:
+        type: array
+        readOnly: true
+        items:
+          $ref: '#/definitions/SelectItem'
+      holders:
+        type: array
+        readOnly: true
+        items:
+          $ref: '#/definitions/CustomerAccountHolder'
+      sharedStatus:
+        type: string
+        default: APPROVED
+        example: 'PENDING, APPROVED'
+  CustomerCreditCardAccountDetail:
+    required:
+      - cardDisplay
+      - cardExpiry
+      - logo
+      - removeText
+      - status
+      - statusText
+      - type
+      - typeText
+    type: object
+    properties:
+      nameOnCard:
+        type: string
+      cardDisplay:
+        type: string
+      typeText:
+        type: string
+      type:
+        type: string
+        example: >-
+          VISA, MASTERCARD, AMEX, DISCOVER, MADA, DEFAULT, MADA_VISA,
+          MADA_MASTERCARD
+      status:
+        type: string
+        example: 'ACTIVE, EXPIRED, BLOCKED'
+      statusText:
+        type: string
+      logo:
+        type: string
+      cardExpiry:
+        type: string
+      removeText:
+        type: string
+  CustomerLoyaltyAccountDetail:
+    required:
+      - status
+      - type
+    type: object
+    properties:
+      loyaltyId:
+        type: string
+      point:
+        type: string
+      status:
+        type: string
+        example: 'ACTIVE, EXPIRED, BLOCKED'
+      type:
+        type: string
+        example: QITAF
+      qitafDetail:
+        $ref: '#/definitions/CustomerQitafAccountDetail'
+  SupportInfo:
+    required:
+      - message
+      - url
+    type: object
+    properties:
+      message:
+        type: string
+      url:
+        type: string
+  CustomerQitafAccountDetail:
+    type: object
+    properties:
+      balance:
+        type: string
+      currentBalance:
+        type: string
+      currency:
+        type: string
+      balanceDate:
+        type: string
+      tier:
+        type: string
+        example: 'CLASSIC, TAMAYOUZ_GOLD, TAMAYOUZ_PLATINUM, TAMAYOUZ_DIAMOND'
+      tierName:
+        type: string
+      mobileNumber:
+        type: string
+      removeText:
+        type: string
+      infoMessages:
+        type: array
+        items:
+          type: string
+  CustomerAccountHolder:
+    required:
+      - customerType
+      - name
+      - status
+    type: object
+    properties:
+      name:
+        type: string
+      imageUrl:
+        type: string
+      status:
+        type: string
+        example: 'OWNER, APPROVED, REJECTED, WAITING'
+      customerType:
+        type: string
+        default: INDIVIDUAL
+        enum:
+          - INDIVIDUAL
+          - COMMERCIAL
+  SelectItem:
+    required:
+      - enable
+      - hasChildren
+      - id
+      - key
+      - name
+      - trigger
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+        readOnly: true
+      icon:
+        type: string
+      enable:
+        type: boolean
+        default: false
+      children:
+        type: array
+        readOnly: true
+        items:
+          $ref: '#/definitions/SelectItem'
+      hasChildren:
+        type: boolean
+        default: false
+      trigger:
+        type: boolean
+        default: false
+      key:
+        type: string
+  PUT_securityToken_REQ:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+  PUT_securityToken_RESP:
+    type: object
+    properties:
+      token:
+        type: string
+  Register:
+    required:
+      - day
+      - idNumber
+      - mobileNumber
+      - month
+      - year
+    type: object
+    properties:
+      idNumber:
+        type: string
+      day:
+        type: string
+      month:
+        type: string
+      year:
+        type: string
+      mobileNumber:
+        type: string
+      password:
+        type: string
+      flowStatus:
+        type: string
+        enum:
+          - REGISTER
+          - REGISTER_NEW_DEVICE
+          - CHANGE_NUMBER
+      device:
+        $ref: '#/definitions/Device'
+  CustomerStatus:
+    required:
+      - flowStatus
+    type: object
+    properties:
+      confirmationInfos:
+        type: array
+        items:
+          type: string
+      flowStatus:
+        type: string
+        enum:
+          - REGISTER
+          - REGISTER_NEW_DEVICE
+          - CHANGE_NUMBER
+schemes:
+  - http
+  - https
+x-ibm-configuration:
+  gateway: datapower-api-gateway
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - log:
+          version: 2.0.0
+          title: log
+      - operation-switch:
+          version: 2.0.0
+          title: operation-switch
+          case:
+            - operations:
+                - postOtp
+              execute:
+                - invoke:
+                    title: invoke
+                    version: 2.0.0
+                    verb: keep
+                    target-url: $(target-url)/securityToken/otp
+                    follow-redirects: false
+                    timeout: 60
+                    parameter-control:
+                      type: blacklist
+                      values: []
+                    header-control:
+                      type: blacklist
+                      values: []
+                    inject-proxy-headers: true
+            - operations:
+                - putOtp1
+              execute:
+                - invoke:
+                    title: invoke
+                    version: 2.0.0
+                    verb: keep
+                    target-url: $(target-url)/securityToken/otp
+                    follow-redirects: false
+                    timeout: 60
+                    parameter-control:
+                      type: blacklist
+                      values: []
+                    header-control:
+                      type: blacklist
+                      values: []
+                    inject-proxy-headers: true
+          otherwise: []
+      - log:
+          version: 2.0.0
+          title: log
+  properties:
+    target-url:
+      value: >-
+        http://consumer-registration-http-ace-tst.apps.cp4i.dev.stcpay.com.sa:80/stcpay
+      description: The URL of the target service
+      encoded: false
